@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //This one is actually a vanilla JavaScript codebase with couple of commented code to highlight how DI(dependency injection works in AngularJS).
+
+        //Creation & Deletion of objects (instance of services, controllers, $scope etc..) is internally managed via something called providers.
+        //Think of providers as something like this.
+        var providers = {
+            name: 'Satya Prakash Jha',
+            role: 'Dev'
+        };
+
+        //And Imagine you need to write a constructor function that requires one of the items in providers to be injected to constructor at runtime at the time of instantiation. e.g.
+        function MyCtrl(name, role){
+            //something here..
+        }
+
+        //Since MyCtrl is instantiated at runtime and requested an item named 'name' to be supplied to it.
+        //angularjs tries to locate that item in it's list of providers and supply to the constructor if available.
+        function invoke(fn){
+            fn.apply(null, [name, role]);
+        }
+    </script>
+</body>
+</html>
